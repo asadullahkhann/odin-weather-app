@@ -1,3 +1,5 @@
+import './styles.css';
+
 const inputEl = document.querySelector('input');
 const enterBtn = document.querySelector('button');
 
