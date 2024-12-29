@@ -10,7 +10,26 @@
     <h1><img src="./images/ezgif-4-a80844d400.gif" alt="honeybee">Bee Weather</h1>
   </div>
   <main>
-    <p><input type="text"><button>Enter</button></p>
+    <div class="weather-card">
+      <div class="search-bar"><input type="text" placeholder="Enter a city name"><button>Go</button></div>
+      <div class="location-info hide"><img src="./images/location-cropped.svg" alt="location"> <p>Mumbai</p></div>
+      <div class="weather-info hide">
+        <div class="col">
+          <p class="bold">Now</p>
+          <p class="temp bold">24&deg</p>
+          <p class="small">Feels like 26&deg</p>
+        </div>
+        <div class="col">
+          <p class="bold">Clear</p>
+          <p class="small">Humidity: 77%</p>
+          <p class="small">Wind: 8 kph</p>
+          <p class="small">Precip: 70%</p>
+        </div>
+      </div>
+      <div class="loading-component hide">
+        <img src="./images/loading-loading-forever.gif" alt="loading-loading-forever">
+      </div>
+    </div>
   </main>
   <footer>
     <p>

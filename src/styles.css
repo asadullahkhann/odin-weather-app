@@ -8,6 +8,11 @@
   src: url('./fonts/KTF-Roadbrush.ttf');
 }
 
+@font-face {
+  font-family: 'inter-regular';
+  src: url('./fonts/Inter-Regular.otf');
+}
+
 :root {
   height: 100%;
   --header-bg: #f9c901;
@@ -20,6 +25,7 @@
   margin: 0;
   padding: 0;
   color: var(--text-clr);
+  box-sizing: border-box;
 }
 
 body {
@@ -37,6 +43,9 @@ body {
 main {
   flex-grow: 1;
   background-color: var(--main-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
@@ -50,7 +59,7 @@ h1 {
   font-family: 'norse-bold';
 }
 
-img {
+h1 > img {
   width: 52px;
   height: 52px;
 }
@@ -71,4 +80,111 @@ footer a {
 footer img {
   width: 1rem;
   height: 1rem;
+}
+
+.weather-card {
+  width: 340px;
+  height: 340px;
+  padding: 10px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: 25px 35px 1fr;
+  gap: 8px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 2px 4px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7d2c4;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0px 2px 6px;
+}
+
+.search-bar > button {
+  padding: 2px 4px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--header-bg);
+  color: var(--text-clr);
+  font-style: italic;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 2px 6px;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.location-info > img {
+  width: 25px;
+  height: 25px;
+}
+
+.location-info > p {
+  font-weight: 600;
+  font-family: 'inter-regular';
+}
+
+.weather-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.col {
+  box-shadow: 0px 2px 6px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.col > p {
+  font-family: 'inter-regular';
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.temp {
+  font-size: 2.3rem;
+}
+
+.small {
+  font-size: 0.9rem;
+  padding: 2px 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.loading-component {
+  box-shadow: 0px 2px 6px;
+  border-radius: 5px;
+  grid-row: 2 / 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-component > img {
+  width: 25px;
+  height: 25px;
+}
+
+.hide {
+  display: none;
 }
