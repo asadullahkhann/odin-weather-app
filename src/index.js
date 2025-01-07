@@ -1,48 +1,55 @@
 import './styles.css';
+import { getWeather, processWeather, getRequiredWeatherInfo } from './get-weather';
+import { renderWeatherInfo, convertToFahrenheit, convertToCelsius } from './dom-manipulator';
+import { getAppropriateGif } from './weather-gifs';
 
 const inputEl = document.querySelector('input');
 const enterBtn = document.querySelector('button');
+const loadingComponent = document.querySelector('.loading-component');
+const locationInfoDiv = document.querySelector('.location-info');
+const weatherInfoDiv = document.querySelector('.weather-info');
+const celsiusBtn = document.querySelector('.temp>button');
+const fahrenheitBtn = document.querySelectorAll('.temp>button')[1];
+const loadingComponentImages = loadingComponent.querySelectorAll('img');
 
-async function getWeather(location) {
-  const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=MCLJCAXDNQF9KKTXDQNEC63JL`);
-  return response;
-};
-
-async function processWeather(weather) {
-  const processedWeather = await weather.json();
-  return processedWeather;
-};
-
-function getRequiredWeatherInfo(processedWeather) {
-  const {address, currentConditions, description} = processedWeather;
-  const {
-    conditions,
-    datetime,
-    feelslike,
-    humidity,
-    sunrise,
-    sunset,
-    temp,
-    windspeed
-  } = currentConditions;
-  return {
-    address, 
-    conditions,
-    datetime,
-    feelslike,
-    humidity,
-    sunrise,
-    sunset,
-    temp,
-    windspeed, 
-    description
-  };
-};
+let requiredWeatherInfo;
+let location;
 
 enterBtn.addEventListener('click', async () => {
-  const location = inputEl.value;
+  if (location === inputEl.value) return;
+  location = inputEl.value;
+  locationInfoDiv.setAttribute('class', 'location-info hide');
+  weatherInfoDiv.setAttribute('class', 'weather-info hide');
+  [...loadingComponentImages].slice(1).forEach(loadingComponentImage => {
+    loadingComponentImage.setAttribute('class', 'hide');
+  });
+  loadingComponent.setAttribute('class', 'loading-component');
+  loadingComponentImages[0].setAttribute('class', '');
   const weather = await getWeather(location);
-  const processedWeather = await processWeather(weather);
-  const requiredWeatherInfo = getRequiredWeatherInfo(processedWeather);
-  console.log(requiredWeatherInfo);
+  if (weather === undefined) {
+    loadingComponentImages[0].setAttribute('class', 'hide');
+    loadingComponentImages[2].setAttribute('class', '');
+  } else if (!weather.ok) {
+    loadingComponentImages[0].setAttribute('class', 'hide');
+    loadingComponentImages[1].setAttribute('class', '');
+  } else {
+    const processedWeather = await processWeather(weather);
+    requiredWeatherInfo = getRequiredWeatherInfo(processedWeather);
+    const gif = await getAppropriateGif(requiredWeatherInfo.conditions);
+    const gifURL = gif.data.images.original.url;
+    loadingComponent.setAttribute('class', 'loading-component hide');
+    locationInfoDiv.setAttribute('class', 'location-info');
+    renderWeatherInfo(location, requiredWeatherInfo, gifURL);
+    weatherInfoDiv.setAttribute('class', 'weather-info');
+    celsiusBtn.setAttribute('class', 'greyed-out');
+    fahrenheitBtn.setAttribute('class', '');
+  }
+});
+
+fahrenheitBtn.addEventListener('click', (e) => {
+  convertToFahrenheit(e, requiredWeatherInfo);
+});
+
+celsiusBtn.addEventListener('click', (e) => {
+  convertToCelsius(e, requiredWeatherInfo);
 });

@@ -12,22 +12,31 @@
   <main>
     <div class="weather-card">
       <div class="search-bar"><input type="text" placeholder="Enter a city name"><button>Go</button></div>
-      <div class="location-info hide"><img src="./images/location-cropped.svg" alt="location"> <p>Mumbai</p></div>
+      <div class="location-info hide"><img src="./images/location-cropped.svg" alt="location"><p> Mumbai</p></div>
       <div class="weather-info hide">
         <div class="col">
-          <p class="bold">Now</p>
-          <p class="temp bold">24&deg</p>
-          <p class="small">Feels like 26&deg</p>
+          <div class="text">
+            <p class="bold">Now</p>
+            <p class="temp bold"><span></span><button class="greyed-out">°C</button><span class="greyed-out"> | </span><button>°F</button></p>
+            <p class="small">Feels like 26&deg</p>
+          </div>
+          <div class="gif">
+            <img src="./images/weather-sexy.gif" alt="weather-sexy">
+          </div>
         </div>
         <div class="col">
-          <p class="bold">Clear</p>
-          <p class="small">Humidity: 77%</p>
-          <p class="small">Wind: 8 kph</p>
-          <p class="small">Precip: 70%</p>
+          <div class="text">
+            <p class="bold">Clear</p>
+            <p class="small">Humidity: 77%</p>
+            <p class="small">Wind: 8 km/h</p>
+          </div>
+          <div class="gif"></div>
         </div>
       </div>
       <div class="loading-component hide">
         <img src="./images/loading-loading-forever.gif" alt="loading-loading-forever">
+        <img class="hide" src="./images/bad-request-error-400.gif" alt="bad-request-error-400">
+        <img class="hide" src="./images/failed-to-fetch.gif" alt="dog-catch">
       </div>
     </div>
   </main>
