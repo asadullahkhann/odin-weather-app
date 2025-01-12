@@ -13,12 +13,18 @@
   src: url('./fonts/Inter-Regular.otf');
 }
 
+/* A294F9
+CDC1FF
+F5EFFF
+E5D9F2 */
+
 :root {
   height: 100%;
-  --header-bg: #f9c901;
-  --main-bg: #f63000;
-  --footer-bg: #985b10;
-  --text-clr: #6b4701;
+  --header-bg: #A294F9;
+  --main-bg: #F5EFFF;
+  --footer-bg: #E5D9F2;
+  --text-clr: #303030;
+  --accent-clr: #CDC1FF;
 }
 
 * {
@@ -65,7 +71,6 @@ h1 > img {
 }
 
 footer p {
-  color: #f7d2c4;
   font-size: 1rem;
   font-family: "ktf-roadbrush";
 }
@@ -99,7 +104,7 @@ input {
   padding: 2px 4px;
   border: none;
   border-radius: 5px;
-  background-color: #f7d2c4;
+  background-color: #e5e5e5;
 }
 
 input:focus {
@@ -111,8 +116,8 @@ input:focus {
   padding: 2px 4px;
   border: none;
   border-radius: 5px;
-  background-color: var(--header-bg);
-  color: var(--text-clr);
+  color: var(--main-bg);
+  background: var(--text-clr);
   font-family: 'inter-regular';
 }
 
@@ -195,7 +200,7 @@ button:hover {
 }
 
 .greyed-out {
-  color: rgb(107 71 1 / .5);
+  color: rgb(48 48 48 / .5);
 }
 
 .temp > button, span.greyed-out {
