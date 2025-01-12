@@ -16,7 +16,7 @@ let requiredWeatherInfo;
 let location;
 
 enterBtn.addEventListener('click', async () => {
-  if (location === inputEl.value) return;
+  if ((!inputEl.value) || (location === inputEl.value)) return;
   location = inputEl.value;
   locationInfoDiv.setAttribute('class', 'location-info hide');
   weatherInfoDiv.setAttribute('class', 'weather-info hide');
