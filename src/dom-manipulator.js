@@ -1,8 +1,7 @@
 const locationInfoPara = document.querySelector('.location-info>p');
 const weatherInfoParas = [...document.querySelectorAll('.text>p')].slice(2);
 const tempSpan = document.querySelector('span');
-const gifContainer = document.querySelectorAll('.gif')[1];
-const gifImg = document.createElement('img');
+const gifContainers = document.querySelectorAll('.gif');
 
 function renderWeatherInfo(location, weatherinfo, gifURL) {
   locationInfoPara.textContent = `${location[0].toUpperCase()}${location.slice(1)}`;
@@ -11,11 +10,14 @@ function renderWeatherInfo(location, weatherinfo, gifURL) {
   weatherInfoParas[1].textContent = weatherinfo.conditions;
   weatherInfoParas[2].textContent = `Humidity: ${weatherinfo.humidity}%`;
   weatherInfoParas[3].textContent = `Wind: ${weatherinfo.windspeed} mph`;
-  gifImg.src = gifURL;
-  while (gifContainer.firstChild) {
-    gifContainer.removeChild(gifContainer.firstChild);
-  }
-  gifContainer.appendChild(gifImg);
+  gifContainers.forEach(gifContainer => {
+    while (gifContainer.firstChild) {
+      gifContainer.removeChild(gifContainer.firstChild);
+    }
+    const img = document.createElement('img');
+    img.src = gifURL;
+    gifContainer.appendChild(img);
+  });
 };
 
 function convertToFahrenheit(event, weatherInfo) {
