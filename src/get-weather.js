@@ -20,7 +20,8 @@ function getRequiredWeatherInfo(processedWeather) {
     feelslike,
     humidity,
     temp,
-    windspeed
+    windspeed,
+    icon
   } = currentConditions;
   return {
     address, 
@@ -29,6 +30,7 @@ function getRequiredWeatherInfo(processedWeather) {
     humidity,
     temp,
     windspeed, 
+    icon
   };
 };
 

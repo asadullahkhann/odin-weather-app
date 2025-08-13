@@ -35,7 +35,7 @@ enterBtn.addEventListener('click', async () => {
   } else {
     const processedWeather = await processWeather(weather);
     requiredWeatherInfo = getRequiredWeatherInfo(processedWeather);
-    const gif = await getAppropriateGif(requiredWeatherInfo.conditions);
+    const gif = await getAppropriateGif(requiredWeatherInfo.icon);
     const gifURL = gif.data.images.original.url;
     loadingComponent.setAttribute('class', 'loading-component hide');
     locationInfoDiv.setAttribute('class', 'location-info');
