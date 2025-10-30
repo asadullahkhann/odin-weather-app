@@ -6,36 +6,36 @@
   <title>Visual Weather</title>
 </head>
 <body>
-  <div class="header">
+  <header>
     <h1><img src="./images/weather-cropped.svg" alt="weather-icon"> Visual Weather</h1>
-  </div>
+    <div class="search-bar">
+        <input value="mumbai" type="text" placeholder="Enter a city">
+        <button><img src="./images/search.svg" alt="search-svg"></button>
+    </div>
+    <div class="location-info "><img src="./images/location-pin-cropped.svg" alt="location"><p> Mumbai</p></div>
+  </header>
   <main>
-    <div class="weather-card">
-      <div class="search-bar"><input type="text" placeholder="Enter a city name"><button>Go</button></div>
-      <div class="location-info hide"><img src="./images/location-pin-cropped.svg" alt="location"><p> Mumbai</p></div>
-      <div class="weather-info hide">
-        <div class="col">
-          <div class="text">
-            <p class="bold">Now</p>
-            <p class="temp bold"><span></span><button class="greyed-out">°C</button><span class="greyed-out"> | </span><button>°F</button></p>
-            <p class="small">Feels like 26&deg</p>
-          </div>
-          <div class="gif"></div>
+    <div class="weather-card hide">
+      <div class="col">
+        <div class="text">
+          <p class="bold">Now</p>
+          <p class="temp bold"><span></span><button class="greyed-out">°C</button><span class="greyed-out"> | </span><button>°F</button></p>
+          <p class="small">Feels like 26&deg</p>
         </div>
-        <div class="col">
-          <div class="text">
-            <p class="bold">Clear</p>
-            <p class="small">Humidity: 77%</p>
-            <p class="small">Wind: 8 km/h</p>
-          </div>
-          <div class="gif"></div>
-        </div>
+        <div class="gif"></div>
       </div>
-      <div class="loading-component hide">
-        <img src="./images/loading-loading-forever.gif" alt="loading-loading-forever">
-        <img class="hide" src="./images/bad-request-error-400.gif" alt="bad-request-error-400">
+      <div class="col">
+        <div class="text">
+          <p class="bold">Clear</p>
+          <p class="small">Humidity: 77%</p>
+          <p class="small">Wind: 8 km/h</p>
+        </div>
+        <div class="gif"></div>
+      </div>
+    </div>
+    <div class="error-card hide">
         <img class="hide" src="./images/failed-to-fetch.gif" alt="dog-catch">
-      </div>
+        <img class="hide" src="./images/bad-request-error-400.gif" alt="bad-request-error-400">
     </div>
   </main>
   <footer>
