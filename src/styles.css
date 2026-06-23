@@ -9,14 +9,28 @@
 }
 
 @font-face {
-  font-family: 'inter-regular';
-  src: url('./fonts/Inter-Regular.otf');
+  font-family: 'inter';
+  src: url('./fonts/inter.woff2');
+}
+
+:root {
+  /* 60-30-10 Color System */
+  --color-dominant: #aee0f2;
+  --color-secondary: #005f8a;
+  --color-accent: #f2c94c;
+  
+  /* Text Colors */
+  --text-on-dominant: #1F2937;
+  --text-on-secondary: #ffffff;
+  --text-on-accent: #000000;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'inter';
+  color: var(--text-on-dominant);
 }
 
 html, body {
@@ -24,160 +38,219 @@ html, body {
 }
 
 body {
-  background-color: #87CEEB;
+  background-color: var(--color-dominant);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-header {
-  padding-top: 8px;
-}
-
 h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   font-family: 'norse-bold';
-}
-
-h1 > img {
-  width: 32px;
-  height: 32px;
-}
-
-header > div{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top:12px;
+  padding: 8px;
+  background-color: var(--color-secondary);
+  color: var(--text-on-secondary);
 }
 
 .search-bar {
   display: flex;
-  gap: 2px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 input {
-  width: 180px;
-  padding: 5px;
-  border: none;
-  border-radius: 8px;
+  width: 250px;
+  padding: 4px;
+  border: 2px solid rgb(0 95 138 / 0.19);
+  border-radius: 6px;
+  background: none;
   font-size: 1rem;
+  text-transform: capitalize;
 }
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-accent);
+}
+
+::placeholder {
+  color: rgb(31 41 55 / 0.7);
 }
 
 .search-bar > button {
-  background-color: inherit;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-accent);
+  color: var(--text-on-accent);
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 1rem;
+  width: 58px;
 }
 
-.search-bar img {
-  width: 20px;
-  height: 20px;
-  align-self: center;
+.search-bar > button:hover {
+  opacity: .9;
 }
 
-.location-info {
-  display: flex;
-  gap: 2px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
-  padding: 5px;
-}
-
-.location-info > img {
+span.spinner {
   width: 16px;
   height: 16px;
-  align-self: center;
+  border: 2px solid var(--text-on-accent);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: spin .6s linear;
+  animation-iteration-count: infinite;
 }
 
-.location-info > p {
-  font-size: 1rem;
-  font-family: 'inter-regular';
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
 }
 
 main {
   display: flex;
   justify-content: center;
+  padding: 16px;
 }
 
 .weather-card {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  padding: 10px;
+  border-radius: 12px;
 }
 
-.col {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 5px;
-  border-radius: 8px;
+div.current-weather {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-weather > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 150px;
+  gap: 6px;
+}
+
+div.address {
+  display: flex;
+  gap: 4px;
+}
+
+.address > p {
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-transform: capitalize;
+}
+
+.address > img {
+  width: 18px;
+  height: 18px;
+  align-self: center;
+}
+
+.temp-wrapper {
+  display: flex;
+}
+
+.weather-icon {
+  width: 42px;
+  height: 42px;
+  margin-right: 4px;
+}
+
+p.curr-temp {
+  font-size: 2rem;
+}
+
+.temp-btns-wrapper {
+  margin-top: 6px;
+  display: flex;
+}
+
+.temp-btns-wrapper > button {
+  font-size: 1rem;
+  align-self: flex-start;
+}
+
+.temp-btns-wrapper > span {
+  height: 19px;
+  border-left: 1px solid #566066;
+  margin: 0 4px;
 }
 
 .bold {
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.temp {
-  font-size: 2rem;
-  display: flex;
+.text-secondary {
+  font-size: 0.9rem;
+  color: rgb(31 41 55 / 0.7);
 }
 
-.small {
-  padding: 2px 0;
+button {
+  border: none;
+  background: none;
 }
 
 button:hover {
   cursor: pointer;
 }
 
-.greyed-out {
-  color: rgb(48 48 48 / .5);
+button:disabled {
+  cursor: text;
 }
 
-.temp > button, span.greyed-out {
-  font-size: 1rem;
-  font-weight: 600;
+.greyed {
+  color: #566066;
 }
 
-.temp > button {
-  align-self: flex-start;
+.forecast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.gif > img {
-  width: 140px;
-  height: 200px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
+.forecast > div {
+  width: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-p, input, button {
-  font-family: 'inter-regular';
+.forecast p:first-child {
+  font-weight: 450;
 }
 
-button {
-  border: none;
-  background: inherit;
+.forecast p:last-child {
+  font-size: 0.9rem;
 }
 
-.error-card > img {
-  width: 300px;
-  height: 300px;
-  border-radius: 8px;
+.forecast img {
+  width: 28px;
+  height: 28px;
 }
 
 .hide {
@@ -186,22 +259,25 @@ button {
 
 footer {
   text-align: center;
-  padding-bottom: 8px;
+  padding: 8px;
+  background-color: var(--color-secondary);
 }
 
 footer p {
   font-size: 1rem;
   font-family: "ktf-roadbrush";
+  color: var(--text-on-secondary);
 }
 
 footer a {
   color: inherit;
+  font-family: inherit;
   display: inline-flex;
   gap: 5px;
+  align-items: flex-end;
 }
 
 footer img {
-  width: 16px;
-  height: 16px;
-  align-self: center;
+  width: 20px;
+  height: 20px;
 }

@@ -7,46 +7,51 @@
 </head>
 <body>
   <header>
-    <h1><img src="./images/weather-cropped.svg" alt="weather-icon"> Visual Weather</h1>
-    <div>
-      <div class="search-bar">
-          <input value="mumbai" type="text" placeholder="Search">
-          <button><img src="./images/search.svg" alt="search-svg"></button>
-      </div>
-      <div class="location-info "><img src="./images/location-pin-cropped.svg" alt="location"><p> Mumbai</p></div>
+    <h1>Visual Weather</h1>
+    <div class="search-bar">
+      <input name="city" value="mumbai" placeholder="Search">
+      <button class="bold" aria-label="search">
+        <span>Search</span>
+        <span aria-hidden="true" class="spinner hide"></span>
+      </button>
+      <span id="status" class="sr-only" aria-live="polite"></span>
     </div>
   </header>
   <main>
     <div class="weather-card hide">
-      <div class="col">
-        <div class="text">
-          <p class="bold">Now</p>
-          <p class="temp bold"><span></span><button class="greyed-out">°C</button><span class="greyed-out"> | </span><button>°F</button></p>
-          <p class="small">Feels like 26&deg</p>
+      <div class="current-weather">
+        <div>
+          <div class="address">
+            <img src="./images/location-pin.svg" alt="">
+            <p class="bold">Mumbai</p>
+          </div>
+          <div class="temp-wrapper">
+            <img alt="" class="weather-icon">
+            <p class="curr-temp"></p>
+            <div class="temp-btns-wrapper">
+              <button class="celsius-btn">°C</button>
+              <span></span>
+              <button class="fahrenheit-btn">°F</button>
+            </div>
+          </div>
+          <p class="text-secondary feels-like">Feels like 26 &deg</p>
         </div>
-        <div class="gif"></div>
+        <div>
+          <p class="bold conditions">Clear</p>
+          <p class="text-secondary humidity">Humidity: 77%</p>
+          <p class="text-secondary wind-speed">Wind: 8 km/h</p>
+        </div>  
       </div>
-      <div class="col">
-        <div class="text">
-          <p class="bold">Clear</p>
-          <p class="small">Humidity: 77%</p>
-          <p class="small">Wind: 8 km/h</p>
-        </div>
-        <div class="gif"></div>
-      </div>
+      <div class="forecast"></div>
     </div>
-    <div class="error-card hide">
-        <img class="hide" src="./images/failed-to-fetch.gif" alt="dog-catch">
-        <img class="hide" src="./images/bad-request-error-400.gif" alt="bad-request-error-400">
-    </div>
+    <p class="error-msg hide"></p>
   </main>
   <footer>
     <p>
       Coded by
-      <a href="https://github.com/asadullahkhann"
-        >AsadUllahKhaNn
-        <img src="./images/github-mark.svg" alt="github-mark"
-      /></a>
+      <a href="https://github.com/asadullahkhann">AsadUllahKhaNn
+        <img src="./images/github-mark-white.svg" alt="github-mark"/>
+      </a>
     </p>
   </footer>
 </body>

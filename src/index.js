@@ -1,70 +1,53 @@
 import './styles.css';
-import loadingGif from './images/loading-loading-forever.gif';
-import searchSvg from './images/search.svg';
-import { getWeather, processWeather, getRequiredWeatherInfo } from './get-weather';
-import { renderWeatherInfo, convertToFahrenheit, convertToCelsius } from './dom-manipulator';
-import { getAppropriateGif } from './weather-gifs';
+import { getWeather, getRequiredWeatherInfo } from './weather';
+import { 
+  renderWeatherInfo, 
+  renderInFahrenheit, 
+  renderInCelsius,
+  renderError
+} from './dom-manipulator';
 
 const inputEl = document.querySelector('input');
-const enterBtn = document.querySelector('button');
-const errorComponent = document.querySelector('.error-card');
-const weatherInfoDiv = document.querySelector('.weather-card');
-const celsiusBtn = document.querySelector('.temp>button');
-const fahrenheitBtn = document.querySelectorAll('.temp>button')[1];
-const errorComponentImages = errorComponent.querySelectorAll('img');
+const searchBtn = document.querySelector('button');
+const searchBtnLabel = document.querySelector('button > span');
+const spinnerSpan = document.querySelector('.spinner');
+const statusSpan = document.querySelector('span#status');
+const celsiusBtn = document.querySelector('.celsius-btn');
+const fahrenheitBtn = document.querySelector('.fahrenheit-btn');
 
-let requiredWeatherInfo;
-let location;
+let requiredWeatherInfo = {};
 
 const showWeather = async () => {
-  if ((!inputEl.value) || (location === inputEl.value)) return;
-  location = inputEl.value;
-  const loadingImg = document.createElement('img');
-  loadingImg.src = loadingGif;
-  [...errorComponentImages].forEach(errorComponentImage => {
-    errorComponentImage.setAttribute('class', 'hide');
-  });
-  enterBtn.removeChild(enterBtn.firstChild);
-  enterBtn.appendChild(loadingImg);
-  enterBtn.removeEventListener('click', showWeather);
-  const weather = await getWeather(location);
-  if (weather === undefined) {
-    weatherInfoDiv.setAttribute('class', 'hide')
-    errorComponentImages[0].setAttribute('class', '');
-    errorComponentImages[1].setAttribute('class', 'hide');
-    errorComponent.setAttribute('class', 'error-card');
-    enterBtn.addEventListener('click', showWeather);
-    loadingImg.src = searchSvg;
-  } else if (!weather.ok) {
-    weatherInfoDiv.setAttribute('class', 'hide');
-    errorComponentImages[0].setAttribute('class', 'hide');
-    errorComponentImages[1].setAttribute('class', '');
-    errorComponent.setAttribute('class', 'error-card');
-    enterBtn.addEventListener('click', showWeather);
-    loadingImg.src = searchSvg;
-  } else {
-    loadingImg.src = searchSvg;
-    enterBtn.addEventListener('click', showWeather);
-    const processedWeather = await processWeather(weather);
-    requiredWeatherInfo = getRequiredWeatherInfo(processedWeather);
-    const gif = await getAppropriateGif(requiredWeatherInfo.icon);
-    const gifURL = gif.data.images.original.url;
-    errorComponent.setAttribute('class', 'hide');
-    renderWeatherInfo(location, requiredWeatherInfo, gifURL);
-    weatherInfoDiv.setAttribute('class', 'weather-card');
-    celsiusBtn.setAttribute('class', 'greyed-out');
-    fahrenheitBtn.setAttribute('class', '');
+  if (!inputEl.value) return;
+  if (inputEl.value === requiredWeatherInfo.address) return;
+  let location = inputEl.value;
+  searchBtnLabel.classList.add('hide');
+  spinnerSpan.classList.remove('hide');
+  searchBtn.disabled = true;
+  statusSpan.textContent = 'Loading, please wait';
+  let response = await getWeather(location);
+  if (response === 'Failed to fetch') renderError('No internet connection.');
+  else if (response.status === 400) renderError('Invalid address');
+  else if (!response.ok) renderError('Something went wrong.');
+  else {
+    response = await response.json();
+    requiredWeatherInfo = getRequiredWeatherInfo(response);
+    renderWeatherInfo(requiredWeatherInfo);
   }
+  console.log(response);  
+  spinnerSpan.classList.add('hide');
+  searchBtnLabel.classList.remove('hide');
+  searchBtn.disabled = false;
 };
 
-enterBtn.addEventListener('click', showWeather);
+searchBtn.addEventListener('click', showWeather);
 
-fahrenheitBtn.addEventListener('click', (e) => {
-  convertToFahrenheit(e, requiredWeatherInfo);
+fahrenheitBtn.addEventListener('click', () => {
+  renderInFahrenheit(requiredWeatherInfo);
 });
 
-celsiusBtn.addEventListener('click', (e) => {
-  convertToCelsius(e, requiredWeatherInfo);
+celsiusBtn.addEventListener('click', () => {
+  renderInCelsius(requiredWeatherInfo);
 });
 
 window.addEventListener('load', showWeather);
