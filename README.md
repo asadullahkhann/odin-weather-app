@@ -25,4 +25,6 @@ A simple weather app that lets you search for any city and view the current weat
 3. View the current weather and 7-day forecast.
 
 
-Live at https://asadullahkhann.github.io/odin-weather-app/
+## Live Demo
+
+https://asadullahkhann.github.io/odin-weather-app/
