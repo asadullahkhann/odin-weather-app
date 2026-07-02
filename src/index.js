@@ -33,14 +33,17 @@ const showWeather = async () => {
     response = await response.json();
     requiredWeatherInfo = getRequiredWeatherInfo(response);
     renderWeatherInfo(requiredWeatherInfo);
-  }
-  console.log(response);  
+  };
   spinnerSpan.classList.add('hide');
   searchBtnLabel.classList.remove('hide');
   searchBtn.disabled = false;
 };
 
 searchBtn.addEventListener('click', showWeather);
+
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') showWeather();
+});
 
 fahrenheitBtn.addEventListener('click', () => {
   renderInFahrenheit(requiredWeatherInfo);

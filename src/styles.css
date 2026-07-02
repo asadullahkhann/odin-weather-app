@@ -178,14 +178,15 @@ div.address {
   width: 42px;
   height: 42px;
   margin-right: 4px;
+  align-self: center;
 }
 
 p.curr-temp {
-  font-size: 2rem;
+  font-size: 2.75rem;
 }
 
 .temp-btns-wrapper {
-  margin-top: 6px;
+  margin-top: 12px;
   display: flex;
 }
 
