@@ -4,6 +4,7 @@ const iconImg = document.querySelector('.weather-icon');
 const currTempPara = document.querySelector('p.curr-temp');
 const feelsLikePara = document.querySelector('p.feels-like');
 const conditionsPara = document.querySelector('p.conditions');
+const descriptionPara = document.querySelector('p.desc');
 const humidityPara = document.querySelector('p.humidity');
 const windSpeedPara = document.querySelector('p.wind-speed'); 
 const fahrenheitBtn = document.querySelector('.fahrenheit-btn');
@@ -23,6 +24,7 @@ function renderWeatherInfo(weatherInfo) {
   renderInCelsius(weatherInfo);
   humidityPara.textContent = `Humidity: ${weatherInfo.humidity}%`;
   conditionsPara.textContent = weatherInfo.conditions;
+  descriptionPara.textContent = weatherInfo.description;
   forecastDiv.textContent = '';
   for (let i = 0; i < 7; i++) {
     const date = new Date(days[i].datetime);

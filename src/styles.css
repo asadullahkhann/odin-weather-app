@@ -135,39 +135,41 @@ main {
 .weather-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   border: 1px solid rgb(255 255 255 / 0.2);
   padding: 10px;
   border-radius: 12px;
 }
 
-div.current-weather {
-  display: flex;
-  justify-content: space-between;
-}
-
-.current-weather > div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
 div.address {
   display: flex;
   gap: 4px;
+  margin-bottom: 16px;
 }
 
 .address > p {
   overflow-wrap: break-word;
   min-width: 0;
   text-transform: capitalize;
+  font-weight: 600;
 }
 
 .address > img {
   width: 18px;
   height: 18px;
   align-self: center;
+}
+
+div.current-weather {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.current-weather > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .temp-wrapper {
@@ -201,13 +203,21 @@ p.curr-temp {
   margin: 0 4px;
 }
 
-.bold {
-  font-weight: 500;
+p.conditions {
+  margin-top: 9.6px;
+  font-size: 1.25rem;
 }
 
 .text-secondary {
-  font-size: 0.9rem;
   color: rgb(31 41 55 / 0.7);
+}
+
+p.desc {
+  font-size: 0.875rem;
+}
+
+.small {
+  font-size: 0.75rem;
 }
 
 button {
@@ -230,28 +240,25 @@ button:disabled {
 .forecast {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px;
+  align-self: center;
 }
 
 .forecast > div {
-  width: 66px;
+  width: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
 
-.forecast p:first-child {
-  font-weight: 450;
-}
-
 .forecast p:last-child {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .forecast img {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .hide {

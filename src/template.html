@@ -10,7 +10,7 @@
     <h1>Visual Weather</h1>
     <div class="search-bar">
       <input name="city" value="mumbai" placeholder="Search">
-      <button class="bold" aria-label="search">
+      <button aria-label="search">
         <span>Search</span>
         <span aria-hidden="true" class="spinner hide"></span>
       </button>
@@ -19,12 +19,12 @@
   </header>
   <main>
     <div class="weather-card hide">
+      <div class="address">
+        <img src="./images/location-pin.svg" alt="">
+        <p></p>
+      </div>
       <div class="current-weather">
         <div>
-          <div class="address">
-            <img src="./images/location-pin.svg" alt="">
-            <p class="bold">Mumbai</p>
-          </div>
           <div class="temp-wrapper">
             <img alt="" class="weather-icon">
             <p class="curr-temp"></p>
@@ -34,13 +34,14 @@
               <button class="fahrenheit-btn">°F</button>
             </div>
           </div>
-          <p class="text-secondary feels-like">Feels like 26 &deg</p>
+          <p class="small text-secondary feels-like"></p>
+          <p class="small text-secondary humidity"></p>
+          <p class="small text-secondary wind-speed"></p>
         </div>
         <div>
-          <p class="bold conditions">Clear</p>
-          <p class="text-secondary humidity">Humidity: 77%</p>
-          <p class="text-secondary wind-speed">Wind: 8 km/h</p>
-        </div>  
+          <p class="conditions"></p>
+          <p class="desc text-secondary"></p>
+        </div>
       </div>
       <div class="forecast"></div>
     </div>

@@ -10,7 +10,7 @@ async function getWeather(location) {
 };
 
 function getRequiredWeatherInfo(weather) {
-  const {address, currentConditions, days} = weather;
+  const {address, currentConditions, description, days} = weather;
   for (const day of days) {
     day.metric = {
       tempMax: Math.ceil((day.tempmax - 32) * 5/9),
@@ -36,8 +36,9 @@ function getRequiredWeatherInfo(weather) {
     windspeed: Math.ceil(windspeed * 1.60934)
   }
   return {
-    address, 
+    address,
     days,
+    description,
     icon,
     temp,
     feelslike,
