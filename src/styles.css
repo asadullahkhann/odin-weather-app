@@ -272,7 +272,7 @@ footer {
 }
 
 footer p {
-  font-size: 0.8rem;
+  font-size: 14px;
   font-family: "ktf-roadbrush";
   color: var(--text-on-secondary);
 }
@@ -281,11 +281,12 @@ footer a {
   color: inherit;
   font-family: inherit;
   display: inline-flex;
+  align-items: center;
   gap: 4px;
-  text-underline-offset: 2.2px;
+  text-underline-offset: 2px;
 }
 
 footer img {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
 }
