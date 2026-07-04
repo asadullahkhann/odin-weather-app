@@ -177,14 +177,14 @@ div.current-weather {
 }
 
 .weather-icon {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   margin-right: 4px;
   align-self: center;
 }
 
 p.curr-temp {
-  font-size: 2.75rem;
+  font-size: 3rem;
 }
 
 .temp-btns-wrapper {
@@ -204,7 +204,7 @@ p.curr-temp {
 }
 
 p.conditions {
-  margin-top: 5.98px;
+  margin-top: 6.52px;
   font-size: 1.25rem;
 }
 
