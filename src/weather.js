@@ -6,7 +6,7 @@ async function getWeather(location) {
   }
   catch(err) {
     return err.message;
-  }
+  };
 };
 
 function getRequiredWeatherInfo(weather) {
@@ -17,7 +17,7 @@ function getRequiredWeatherInfo(weather) {
       tempMin: Math.ceil((day.tempmin - 32) * 5/9),
     };
     day.tempmax = Math.ceil(day.tempmax);
-    day.tempmin = Math.ceil(day.tempmin)
+    day.tempmin = Math.ceil(day.tempmin);
   }
   let {
     conditions,
@@ -27,6 +27,8 @@ function getRequiredWeatherInfo(weather) {
     windspeed,
     icon
   } = currentConditions;
+  conditions = conditions.replace('Partially', 'Partly');
+  conditions = conditions.replace('partially', 'partly');
   temp = Math.ceil(temp);
   feelslike = Math.ceil(feelslike);
   windspeed = Math.ceil(windspeed);
@@ -34,7 +36,7 @@ function getRequiredWeatherInfo(weather) {
     temp: Math.ceil((temp - 32) * 5/9),
     feelslike: Math.ceil((feelslike - 32) * 5/9),
     windspeed: Math.ceil(windspeed * 1.60934)
-  }
+  };
   return {
     address,
     days,
