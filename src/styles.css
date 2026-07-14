@@ -97,8 +97,8 @@ input:focus {
 span.spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid var(--text-on-accent);
-  border-bottom-color: transparent;
+  border: 2px solid rgb(0 0 0 / .2);
+  border-top-color: #000;
   border-radius: 50%;
   animation: spin .6s linear;
   animation-iteration-count: infinite;
