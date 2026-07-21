@@ -14,7 +14,7 @@ const forecastDiv = document.querySelector('.forecast');
 const errorMsgPara = document.querySelector('p.error-msg');
 
 function renderWeatherInfo(weatherInfo) {
-  const iconsPath = './images/visualcrossing-icons-2nd-set';
+  const iconsPath = './images/visualcrossing-icons-1st-set';
   const days = weatherInfo.days;
   errorMsgPara.classList = 'error-card hide';
   weatherCardDiv.classList = 'weather-card';
