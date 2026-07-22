@@ -59,7 +59,7 @@ h1 {
   margin-top: 8px;
 }
 
-input {
+.search-bar > input {
   width: 250px;
   padding: 4px;
   border: 2px solid rgb(0 95 138 / 0.19);
@@ -90,7 +90,7 @@ input:focus {
   width: 58px;
 }
 
-.search-bar > button:hover {
+button:hover {
   opacity: .9;
 }
 
@@ -144,7 +144,6 @@ main {
 div.address {
   display: flex;
   gap: 4px;
-  margin-bottom: 16px;
 }
 
 .address > p {
@@ -160,6 +159,69 @@ div.address {
   align-self: center;
 }
 
+.dropdown-wrapper {
+  align-self: flex-end;
+  position: relative;
+}
+
+.toggle-btn {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.dropdown {
+  background-color: var(--color-secondary);
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown > p {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+label {
+  color: var(--text-on-secondary);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgb(255 255 255 / 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="radio"]::after {
+  content: "";
+  width: 6px;
+  height: 6px; 
+  border-radius: 50%;
+}
+
+input:checked {
+  border-color: #fff;
+}
+
+input:checked::after {
+  background-color: var(--color-accent);
+}
+
+
 div.current-weather {
   display: flex;
   gap: 16px;
@@ -174,33 +236,17 @@ div.current-weather {
 
 .temp-wrapper {
   display: flex;
+  gap: 4px;
 }
 
 .weather-icon {
   width: 52px;
   height: 52px;
-  margin-right: 4px;
   align-self: center;
 }
 
 p.curr-temp {
   font-size: 3rem;
-}
-
-.temp-btns-wrapper {
-  margin-top: 12px;
-  display: flex;
-}
-
-.temp-btns-wrapper > button {
-  font-size: 1rem;
-  align-self: flex-start;
-}
-
-.temp-btns-wrapper > span {
-  height: 19px;
-  border-left: 1px solid #566066;
-  margin: 0 4px;
 }
 
 p.conditions {
@@ -231,10 +277,6 @@ button:hover {
 
 button:disabled {
   cursor: text;
-}
-
-.greyed {
-  color: #566066;
 }
 
 .forecast {

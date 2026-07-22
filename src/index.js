@@ -12,8 +12,10 @@ const searchBtn = document.querySelector('button');
 const searchBtnLabel = document.querySelector('button > span');
 const spinnerSpan = document.querySelector('.spinner');
 const statusSpan = document.querySelector('span#status');
-const celsiusBtn = document.querySelector('.celsius-btn');
-const fahrenheitBtn = document.querySelector('.fahrenheit-btn');
+const celsiusBtn = document.querySelector('#celsius-btn');
+const fahrenheitBtn = document.querySelector('#fahrenheit-btn');
+const dropdownDiv = document.querySelector('.dropdown');
+const toggleDropdownBtn = document.querySelector('.toggle-btn');
 
 let requiredWeatherInfo = {};
 
@@ -52,5 +54,9 @@ fahrenheitBtn.addEventListener('click', () => {
 celsiusBtn.addEventListener('click', () => {
   renderInCelsius(requiredWeatherInfo);
 });
+
+toggleDropdownBtn.addEventListener('click', () => {
+  dropdownDiv.classList.toggle('hide');
+})
 
 window.addEventListener('load', showWeather);

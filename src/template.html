@@ -23,16 +23,24 @@
         <img src="./images/location-pin.svg" alt="">
         <p></p>
       </div>
+      <div class="dropdown-wrapper">
+        <button class="toggle-btn" aria-label="Select temperature unit">⋮</button>
+        <div class="dropdown hide">
+          <p>
+            <input type="radio" name="unit" id="fahrenheit-btn">
+            <label for="fahrenheit-btn">Fahrenheit – °F</label>
+          </p>
+          <p>
+            <input type="radio" name="unit" id="celsius-btn" checked>
+            <label for="celsius-btn">Celsius – °C</label>
+          </p>
+        </div>
+      </div>
       <div class="current-weather">
         <div>
           <div class="temp-wrapper">
             <img alt="" class="weather-icon">
             <p class="curr-temp"></p>
-            <div class="temp-btns-wrapper">
-              <button class="celsius-btn">°C</button>
-              <span></span>
-              <button class="fahrenheit-btn">°F</button>
-            </div>
           </div>
           <p class="small text-secondary feels-like"></p>
           <p class="small text-secondary humidity"></p>
