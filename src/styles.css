@@ -4,11 +4,6 @@
 }
 
 @font-face {
-  font-family: 'ktf-roadbrush';
-  src: url('./fonts/KTF-Roadbrush.ttf');
-}
-
-@font-face {
   font-family: 'inter';
   src: url('./fonts/inter.woff2');
 }
@@ -308,24 +303,15 @@ button:disabled {
 }
 
 footer {
-  text-align: center;
   padding: 6px;
   background-color: var(--color-secondary);
-}
-
-footer p {
-  font-size: 14px;
-  font-family: "ktf-roadbrush";
   color: var(--text-on-secondary);
-}
-
-footer a {
-  color: inherit;
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
+  line-height: 1;
+  font-size: 0.8125rem;
+  display: flex;
   gap: 4px;
-  text-underline-offset: 2px;
+  justify-content: center;
+  align-items: center;
 }
 
 footer img {
